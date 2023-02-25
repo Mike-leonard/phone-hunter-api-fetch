@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Phone Hunter</title>
+    
+    <!-- Daisy UI and Tailwind CSS-->
+    <link href="https://cdn.jsdelivr.net/npm/daisyui@2.51.1/dist/full.css" rel="stylesheet" type="text/css" />
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body>
+    <header>
+        <h1 class="text-3xl text-center my-5">Welcome to Phone Hunter Website</h1>
+        <section class="flex justify-center gap-4">
+            <input id="search-field" type="text" placeholder="Phone Name" class="input input-bordered input-primary w-full max-w-xs" />
+            <button id="btn-search" class="btn btn-primary">Search</button>
+        </section>
+    </header>
+
+    <main class="my-5">
+        <section class="flex justify-evenly">
+            <div id="parent-container" class="grid grid-cols-3 gap-4">
+            </div>
+        </section>
+
+        <!-- No items found Messages -->
+        <section id="notify-message" class="my-12 text-center">
+            <p class="text-2xl text-green-600">No Items Found.</p>
+        </section>
+
+        <!-- Spinner showing -->
+        <section id="spinner-run" class="my-12 text-center">
+            <div
+                class="inline-block h-8 w-8 animate-spin rounded-full border-4 border-solid border-current border-r-transparent align-[-0.125em] text-info motion-reduce:animate-[spin_1.5s_linear_infinite]"
+                role="status">
+                <span
+                class="!absolute !-m-px !h-px !w-px !overflow-hidden !whitespace-nowrap !border-0 !p-0 ![clip:rect(0,0,0,0)]"
+                >Loading...</span
+                >
+            </div>
+        </section>
+
+        <section>
+            <input type="checkbox" id="my-modal-6" class="modal-toggle" />
+            <div class="modal modal-bottom sm:modal-middle">
+                <div class="modal-box">
+                    <h3 id="modal-phn-name" class="font-bold text-lg"></h3>
+                    <div id="more-info" class="py-4">
+
+                    </div>
+                    <div class="modal-action">
+                    <label for="my-modal-6" class="btn">Yay!</label>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+
+    <script src="js/hunter.js"></script>
+
+</body>
+</html>
