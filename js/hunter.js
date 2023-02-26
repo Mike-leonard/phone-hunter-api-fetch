@@ -4,6 +4,10 @@ const parentContainer = document.getElementById('parent-container')
 const searchField = document.getElementById('search-field')
 const btnSearch = document.getElementById('btn-search')
 
+// notify element
+const notifyMessage = document.getElementById('notify-message')
+const spinnerRun = document.getElementById('spinner-run')
+
 // Phone loader function
 const loadPhones = async (searchText) => {
     const res = await fetch(`https://openapi.programming-hero.com/api/phones?search=${searchText}`)
@@ -14,6 +18,11 @@ const loadPhones = async (searchText) => {
 // display Loaded phones
 const displayPhone = phones => {
     parentContainer.innerHTML = ''
+    if(phones.length === 0) {
+        notifyMessage.classList.remove('hidden')
+    } else {
+        notifyMessage.classList.add('hidden')
+    }
     phones.forEach(element => {
         const {brand, phone_name, image, slug } = element
         const phnDiv = document.createElement('div')
@@ -32,6 +41,7 @@ const displayPhone = phones => {
         `
         parentContainer.appendChild(phnDiv)
     })
+    spinnerRun.classList.add('hidden')
 }
 
 // showing modal with phn info
@@ -54,6 +64,7 @@ const modalPhnInfo = async slug => {
 
 btnSearch.addEventListener('click', function () {
     const searchText = searchField.value
+    spinnerRun.classList.remove('hidden')
     loadPhones(searchText)
     console.log(searchText)
 })
