@@ -62,10 +62,22 @@ const modalPhnInfo = async slug => {
         `
 }
 
+// search button handle
 btnSearch.addEventListener('click', function () {
+    passInputField()
+})
+
+// Enter button listener
+searchField.addEventListener('keypress', function(event) {
+    if (event.key === 'Enter') 
+        passInputField()
+
+})
+
+// pass search field text
+const passInputField = () => {
     const searchText = searchField.value
     spinnerRun.classList.remove('hidden')
     loadPhones(searchText)
-    console.log(searchText)
-})
+}
 loadPhones('iphone')
