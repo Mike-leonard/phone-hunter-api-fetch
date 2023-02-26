@@ -14,8 +14,13 @@
     <header>
         <h1 class="text-3xl text-center my-5">Welcome to Phone Hunter Website</h1>
         <section class="flex justify-center gap-4">
-            <input id="search-field" type="text" placeholder="Phone Name" class="input input-bordered input-primary w-full max-w-xs" />
+            <input id="search-field" type="text" placeholder="Phone Name or Phone Model" class="input input-bordered input-primary w-full max-w-xs" />
             <button id="btn-search" class="btn btn-primary">Search</button>
+        </section>
+        <section class="flex justify-center my-5">
+            <div class="badge badge-danger gap-2 p-3 text-white">
+               <p>Please Use Huawei, Apple, Samsung, Oppo to search phones</p> 
+              </div>
         </section>
     </header>
 
@@ -42,6 +47,10 @@
             </div>
         </section>
 
+        <section id="see-all" class="my-12 text-center hidden">
+            <button id="btn-see-all" class="btn btn-secondary">See All</button>
+        </section>
+
         <section>
             <input type="checkbox" id="my-modal-6" class="modal-toggle" />
             <div class="modal modal-bottom sm:modal-middle">
@@ -57,8 +66,6 @@
             </div>
         </section>
     </main>
-
-
     <script src="js/hunter.js"></script>
 
 </body>

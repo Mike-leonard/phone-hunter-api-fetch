@@ -7,21 +7,30 @@ const btnSearch = document.getElementById('btn-search')
 // notify element
 const notifyMessage = document.getElementById('notify-message')
 const spinnerRun = document.getElementById('spinner-run')
+const seeAll = document.getElementById('see-all')
+const btnSeeAll = document.getElementById('btn-see-all')
 
 // Phone loader function
-const loadPhones = async (searchText) => {
+const loadPhones = async (searchText, dataLimit) => {
     const res = await fetch(`https://openapi.programming-hero.com/api/phones?search=${searchText}`)
     const data = await res.json()
-    displayPhone(data.data)
+    displayPhone(data.data, dataLimit)
 }
 
 // display Loaded phones
-const displayPhone = phones => {
+const displayPhone = (phones, dataLimit) => {
     parentContainer.innerHTML = ''
     if(phones.length === 0) {
         notifyMessage.classList.remove('hidden')
     } else {
         notifyMessage.classList.add('hidden')
+    }
+
+    if (dataLimit && phones.length > 9) {
+        phones = phones.slice(0, 9)
+        seeAll.classList.remove('hidden')
+    } else {
+        seeAll.classList.add('hidden')
     }
     phones.forEach(element => {
         const {brand, phone_name, image, slug } = element
@@ -64,20 +73,25 @@ const modalPhnInfo = async slug => {
 
 // search button handle
 btnSearch.addEventListener('click', function () {
-    passInputField()
+    passInputField(9)
 })
 
 // Enter button listener
 searchField.addEventListener('keypress', function(event) {
     if (event.key === 'Enter') 
-        passInputField()
+        passInputField(9)
 
 })
 
 // pass search field text
-const passInputField = () => {
+const passInputField = (dataLimit) => {
     const searchText = searchField.value
     spinnerRun.classList.remove('hidden')
-    loadPhones(searchText)
+    loadPhones(searchText, dataLimit)
 }
+
+// btn see all listener
+btnSeeAll.addEventListener('click', function() {
+    passInputField()
+})
 loadPhones('iphone')
