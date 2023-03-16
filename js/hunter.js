@@ -62,13 +62,11 @@ const modalPhnInfo = async slug => {
     phnName.innerText = name
     const moreInfo = document.getElementById('more-info')
     moreInfo.innerHTML = `
-
         <p>${releaseDate ? releaseDate : 'No Release Date Found'}</p>
         <p>ChipSet: ${mainFeatures.chipSet}</p>
         <p>displaySize: ${mainFeatures.displaySize}</p>
         <p>${name} have ${mainFeatures.sensors.length} sensors</p>
-
-        `
+    `
 }
 
 // search button handle
